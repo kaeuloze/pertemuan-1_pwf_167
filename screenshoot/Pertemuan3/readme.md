@@ -1,4 +1,4 @@
-Berikut **README.md versi lebih rapi dan enak dilihat di GitHub** (gambar ditengah, tidak terlalu panjang, cocok untuk laporan atau repository).
+
 
 # 📦 Laravel Migration & Model Documentation
 
