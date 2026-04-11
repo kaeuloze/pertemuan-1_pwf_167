@@ -7,7 +7,7 @@
                     {{-- Header --}}
                     <div class="flex items-center gap-3 mb-6">
                         <a href="{{ route('product.show', $product) }}"
-                           class="p-1.5 rounded-md text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
+                           class="p-2 rounded-lg text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
                                  stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -28,7 +28,7 @@
                         </div>
                     </div>
 
-                    {{-- Delete Form (Ganti route ke .destroy) --}}
+                    {{-- Delete Form --}}
                     @can('delete', $product)
                     <form id="delete-product-form"
                           action="{{ route('product.destroy', $product->id) }}"
@@ -68,7 +68,6 @@
                                        class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                                     Quantity <span class="text-red-500">*</span>
                                 </label>
-                                {{-- REVISI: Menggunakan 'qty' --}}
                                 <input type="number" id="qty" name="qty"
                                        value="{{ old('qty', $product->qty) }}"
                                        placeholder="0" min="0"
@@ -125,25 +124,33 @@
 
                         {{-- Actions --}}
                         <div class="flex items-center justify-between pt-2">
+
                             @can('delete', $product)
                             <button type="submit"
                                     form="delete-product-form"
                                     onclick="return confirm('Are you sure you want to delete this product?');"
-                                    class="inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-lg text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 transition">
+                                    class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg
+                                           text-red-600 border border-red-200
+                                           hover:bg-red-50 dark:hover:bg-red-900/30 transition">
                                 Delete Product
                             </button>
                             @else
-                            <div></div> {{-- Spacer biar tombol update tetep di kanan --}}
+                            <div></div>
                             @endcan
 
-                            <div class="flex items-center gap-3">
+                            <div class="flex items-center gap-2">
                                 <a href="{{ route('product.show', $product) }}"
-                                   class="px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-600 text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+                                   class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg
+                                          border border-gray-300 dark:border-gray-600
+                                          text-gray-600 dark:text-gray-300
+                                          hover:bg-gray-50 dark:hover:bg-gray-700 transition">
                                     Cancel
                                 </a>
 
                                 <button type="submit"
-                                        class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-medium rounded-lg shadow-sm transition">
+                                        class="inline-flex items-center gap-2 px-4 py-2.5 text-sm font-medium rounded-lg
+                                               bg-indigo-600 text-black
+                                               hover:bg-indigo-700 transition">
                                     Update Product
                                 </button>
                             </div>
