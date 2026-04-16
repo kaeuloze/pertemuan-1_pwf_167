@@ -21,13 +21,31 @@
                         </a>
                     </div>
 
-                    {{-- Flash Message --}}
-                    @if(session('success'))
-                        <div class="mb-4 px-4 py-3 bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-700 text-green-700 dark:text-green-300 rounded-lg text-sm">
-                            {{ session('success') }}
-                        </div>
-                    @endif
 
+
+                    @if(session('success'))
+    <div x-data="{ show: true }" 
+         x-show="show" 
+         x-transition:leave="transition ease-in duration-300"
+         x-transition:leave-start="opacity-100 scale-100"
+         x-transition:leave-end="opacity-0 scale-95"
+         class="mb-6 px-4 py-3 bg-green-100 border border-green-400 text-green-700 rounded-lg shadow-sm flex items-center justify-between" 
+         role="alert">
+        
+        <div class="flex items-center gap-2">
+            <span class="text-lg">✅</span>
+            <div>
+                <strong class="font-bold">Mantap!</strong>
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
+        </div>
+
+        {{-- Tombol OK / Close --}}
+        <button @click="show = false" class="text-green-700 hover:text-green-900 font-bold px-2 py-1 rounded-md hover:bg-green-200 transition">
+            OK
+        </button>
+    </div>
+@endif
                     {{-- Table --}}
                     <div class="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
                         <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700 text-sm">
