@@ -58,10 +58,10 @@
                             <div class="text-sm text-gray-500">Quantity</div>
                             <div class="col-span-2">
                                 <span class="px-3 py-1 rounded-full text-xs font-medium
-                                    {{ $product->quantity > 10
+                                    {{ $product->qty > 10
                                         ? 'bg-green-100 text-green-700 dark:bg-green-900/40 dark:text-green-400'
                                         : 'bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-400' }}">
-                                    {{ $product->quantity }} {{ $product->quantity > 10 ? 'In Stock' : 'Low Stock' }}
+                                    {{ $product->qty }} {{ $product->qty > 10 ? 'In Stock' : 'Low Stock' }}
                                 </span>
                             </div>
                         </div>
