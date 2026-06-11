@@ -9,10 +9,22 @@ class StoreProductRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-   public function authorize(): bool
-{
-    return true; // Ubah jadi true agar diizinkan
-}
+    public function authorize(): bool
+    {
+        return true; // Ubah jadi true agar diizinkan
+    }
+
+    /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation()
+    {
+        if (auth()->check()) {
+            $this->merge([
+                'user_id' => $this->user_id ?? auth()->id(),
+            ]);
+        }
+    }
 
 public function rules(): array
 {

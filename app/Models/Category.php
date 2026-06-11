@@ -2,14 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    // menambahkan baris sakti ini bolo!
-    protected $fillable = ['name'];
+    use HasFactory;
 
-    // Relasi ke produk 
+    protected $fillable = [
+        'name',
+        'description'
+    ];
+
+    // Relasi ke Product
     public function products()
     {
         return $this->hasMany(Product::class);
